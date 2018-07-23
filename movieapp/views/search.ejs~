@@ -1,0 +1,6 @@
+<h1>search page</h1>
+
+<form>
+<input type="text" placeholer="enter a Movie" name="search">
+<input type="submit" value= "Hit to submit">
+</form>
