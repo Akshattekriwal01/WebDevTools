@@ -1,0 +1,31 @@
+var express = require("express");
+var app = express();
+var bodyParser =require("body-parser");
+app.use(bodyParser.urlencoded({extended:true}));
+app.set("view engine","ejs");//now I dont have to write xyz.ejs
+
+var friends= ["a","b","c","d","e"];
+
+app.post("/addfriend", function(req, res){
+    console.log(req.body);
+    var newFriend =req.body.newFriend ;
+    friends.push(newFriend);
+    res.redirect("/friends");
+   
+})
+app.get("/",function(req, res){
+    res.render("home");
+})
+
+app.get("/friends",function(req, res){
+   
+    res.render("friends",{friends : friends});
+})
+ 
+app.get("/",function(req, res){
+    res.send("friends");
+})
+
+app.listen(8000, function(){
+    console.log("the server is listening");
+})
